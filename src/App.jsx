@@ -21,24 +21,64 @@ function App() {
   }, []);
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          {posts.map((item) => (
-            <div key={item.id}>
-              <h2>{item.title}</h2>
-              <img src={item.image} width="300" alt={item.title} />
-              <p>{item.description}</p>
-              <p>{item.text}</p>
-              <p>{item.createdAt}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+    <div
+      style={{
+        display: "flex",
+        width: "100vw",
+        height: "auto",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        // backgroundColor: "green",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          width: "100%",
+          height: "auto",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          // marginLeft: "-150px",
+        }}
+      >
+        {/* <div> */}
+        {posts.map((item) => (
+          <div
+            style={{
+              display: "flex",
+              width: "60%",
+              height: "auto",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              // marginLeft: "-150px",
+              marginTop: "70px",
+            }}
+            key={item.id}
+          >
+            <h2>{item.title}</h2>
+            <img src={item.image} width="300" alt={item.title} />
+            {/* <p>{item.description}</p> */}
+            <p
+              style={{
+                textIndent: "20px",
+                textAlign: "justify",
+                width: "80%",
+              }}
+            >
+              {item.text}
+            </p>
+            <p>{item.createdAt}</p>
+          </div>
+        ))}
+      </div>
+      {/* </div> */}
 
       <div className="ticks"></div>
       <section id="spacer"></section>
-    </>
+    </div>
   );
 }
 
