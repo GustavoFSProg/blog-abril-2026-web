@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "./api";
+import moment from "moment";
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -14,6 +15,10 @@ function App() {
     } catch (error) {
       return alert(error);
     }
+  }
+
+  function getDateWithoutTime(date) {
+    return moment(date).format("DD-MM-YYYY");
   }
 
   useEffect(() => {
@@ -58,7 +63,7 @@ function App() {
             }}
             key={item.id}
           >
-            <h2>{item.title}</h2>
+            <h1>{item.title}</h1>
             <img src={item.image} width="300" alt={item.title} />
             {/* <p>{item.description}</p> */}
             <p
@@ -70,7 +75,9 @@ function App() {
             >
               {item.text}
             </p>
-            <p>{item.createdAt}</p>
+            <p style={{ marginLeft: "510px" }}>
+              {getDateWithoutTime(item.createdAt)}
+            </p>
           </div>
         ))}
       </div>
