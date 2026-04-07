@@ -17,7 +17,7 @@ const Card = styled.div`
   margin-top: 70px;
   background: #ffffcc;
   padding: 30px;
-  /* padding-bottom: 30px; */
+  padding-bottom: 50px;
   border: 1px solid black;
   border-radius: 10px;
   /* flex-direction: row; */
