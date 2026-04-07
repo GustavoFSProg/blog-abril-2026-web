@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { RxAvatar } from "react-icons/rx";
 import { FaRegHeart } from "react-icons/fa6";
 import Header from "../Components/Header/Header";
+import { AiTwotoneLike } from "react-icons/ai";
 
 const Card = styled.div`
   display: flex;
@@ -96,6 +97,7 @@ function Post() {
               display: "flex",
               width: "100%",
               flexDirection: "row",
+              marginLeft: "180px",
               // justifyContent: "space-between",
             }}
           >
@@ -107,25 +109,55 @@ function Post() {
                 flexDirection: "row",
               }}
             >
-              <span
+              <AiTwotoneLike
                 style={{
-                  marginBottom: "10px",
-                  // marginTop: "-20px",
-                  marginLeft: "88px",
-                }}
-              >
-                {post.likes}
-              </span>
-              <FaRegHeart
-                style={{
-                  color: "red",
-                  fontSize: "18px",
+                  color: "blue",
+                  fontSize: "23px",
                   marginLeft: "5px",
                   marginTop: "-10px",
                 }}
               />
+
+              <span
+                style={{
+                  marginBottom: "10px",
+                  marginTop: "2px",
+                  marginLeft: "2px",
+                  fontSize: "22px",
+                }}
+              >
+                {post.likes}
+              </span>
             </div>
-            <span style={{ marginLeft: "10px" }}>VIEWS: {post.views}</span>
+
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexDirection: "row",
+                marginLeft: "20px",
+              }}
+            >
+              <span
+                style={{
+                  marginLeft: "10px",
+                  fontSize: "18px",
+                  marginTop: "-10px",
+                }}
+              >
+                VIEWS:
+                <span
+                  style={{
+                    fontSize: "22px",
+                    marginLeft: "2px",
+                    marginBottom: "2px",
+                  }}
+                >
+                  {post.views}
+                </span>
+              </span>
+            </div>
           </div>
         </Card>
       </div>
