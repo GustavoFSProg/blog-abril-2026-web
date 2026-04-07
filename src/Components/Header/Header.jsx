@@ -6,10 +6,10 @@ function Header() {
       style={{
         display: "flex",
         width: "100vw",
-        height: "75px",
+        height: "64px",
         alignItems: "center",
         justifyContent: "center",
-        background: "green",
+        background: "#3d7bcc",
         color: "yellow",
       }}
     >
@@ -17,14 +17,18 @@ function Header() {
         style={{
           display: "flex",
           width: "70%",
-          height: "75px",
+          height: "70px",
           alignItems: "center",
           justifyContent: "space-between",
-          background: "green",
+          //   background: "green",
           color: "yellow",
+          fontSize: "15px",
         }}
       >
-        <Link to="/" style={{ textDecoration: "none", color: "yellow" }}>
+        <Link
+          to="/"
+          style={{ cursor: "pointer", textDecoration: "none", color: "yellow" }}
+        >
           <h3>Home</h3>
         </Link>
         <h3>Cadastro</h3>
