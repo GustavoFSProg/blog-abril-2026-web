@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import api from "../api";
 import moment from "moment";
 import styled from "styled-components";
-
+import { RxAvatar } from "react-icons/rx";
+import { FaRegHeart } from "react-icons/fa6";
 import Header from "../Components/Header/Header";
 
 const Card = styled.div`
@@ -98,9 +99,32 @@ function Post() {
               // justifyContent: "space-between",
             }}
           >
-            <span style={{ marginBottom: "10px", marginLeft: "88px" }}>
-              LIKES: {post.likes}
-            </span>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexDirection: "row",
+              }}
+            >
+              <span
+                style={{
+                  marginBottom: "10px",
+                  // marginTop: "-20px",
+                  marginLeft: "88px",
+                }}
+              >
+                {post.likes}
+              </span>
+              <FaRegHeart
+                style={{
+                  color: "red",
+                  fontSize: "18px",
+                  marginLeft: "5px",
+                  marginTop: "-10px",
+                }}
+              />
+            </div>
             <span style={{ marginLeft: "10px" }}>VIEWS: {post.views}</span>
           </div>
         </Card>
