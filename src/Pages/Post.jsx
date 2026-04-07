@@ -1,32 +1,49 @@
-// import { useEffect, useState } from "react";
-// import api from "./api";
-// import moment from "moment";
-// import styled from "styled-components";
+import { useEffect, useState } from "react";
+import api from "../api";
+import moment from "moment";
+import styled from "styled-components";
 
 import Header from "../Components/Header/Header";
 
+const Card = styled.div`
+  display: flex;
+  width: 60%;
+  height: auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 70px;
+  background: #ffffcc;
+  padding: 30px;
+  /* padding-bottom: 30px; */
+  border: 1px solid black;
+  border-radius: 10px;
+  /* flex-direction: row; */
+`;
+
 function Post() {
-  // const [posts, setPosts] = useState([]);
+  const postId = localStorage.getItem("POST-ID");
+  const [post, setPost] = useState({});
 
-  // async function getPosts() {
-  //   try {
-  //     const { data } = await api.get("/get-posts");
+  async function getPost() {
+    try {
+      const { data } = await api.get(`/get-one-post/${postId}`);
 
-  //     setPosts(data);
+      setPost(data);
 
-  //     return console.log(posts);
-  //   } catch (error) {
-  //     return alert(error);
-  //   }
-  // }
+      return console.log(post);
+    } catch (error) {
+      return alert(error);
+    }
+  }
 
-  // function getDateWithoutTime(date) {
-  //   return moment(date).format("DD-MM-YYYY");
-  // }
+  function getDateWithoutTime(date) {
+    return moment(date).format("DD-MM-YYYY");
+  }
 
-  // useEffect(() => {
-  //   getPosts();
-  // }, []);
+  useEffect(() => {
+    getPost();
+  }, []);
 
   return (
     <>
@@ -39,10 +56,54 @@ function Post() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          // backgroundColor: "green",
+          marginBottom: "150px",
         }}
       >
         <h1>POST</h1>
+        {/* {postId} */}
+        <Card key={post.id}>
+          <h1>{post.title}</h1>
+
+          <img src={post.image} width="300" alt={post.title} />
+          {/* <p>{post.description}</p> */}
+
+          <p
+            style={{
+              textIndent: "20px",
+              textAlign: "justify",
+              width: "80%",
+            }}
+          >
+            {post.text}
+          </p>
+          <div
+            style={{
+              display: "flex",
+              width: "100%",
+              flexDirection: "row",
+              justifyContent: "space-around",
+            }}
+          >
+            <p style={{ marginLeft: "-5px" }}>Autor: {post.author}</p>
+            {/* <p style={{ marginLeft: "320px" }}> */}
+            <p style={{ marginLeft: "185px" }}>
+              {getDateWithoutTime(post.createdAt)}
+            </p>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              width: "100%",
+              flexDirection: "row",
+              // justifyContent: "space-between",
+            }}
+          >
+            <span style={{ marginBottom: "10px", marginLeft: "88px" }}>
+              LIKES: {post.likes}
+            </span>
+            <span style={{ marginLeft: "10px" }}>VIEWS: {post.views}</span>
+          </div>
+        </Card>
       </div>
     </>
   );

@@ -91,7 +91,11 @@ function App() {
             <>
               <Card key={item.id}>
                 <h1>{item.title}</h1>
-                <Links to="/post" style={{ textDecoration: "none" }}>
+                <Links
+                  to="/post"
+                  onClick={() => localStorage.setItem("POST-ID", item.id)}
+                  style={{ textDecoration: "none" }}
+                >
                   <img src={item.image} width="300" alt={item.title} />
                   {/* <p>{item.description}</p> */}
                   <p
