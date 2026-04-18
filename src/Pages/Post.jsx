@@ -6,6 +6,7 @@ import { RxAvatar } from "react-icons/rx";
 import { FaRegHeart } from "react-icons/fa6";
 import Header from "../Components/Header/Header";
 import { AiTwotoneLike } from "react-icons/ai";
+import { AiFillLike } from "react-icons/ai";
 
 const Card = styled.div`
   display: flex;
@@ -26,12 +27,37 @@ const Card = styled.div`
 function Post() {
   const postId = localStorage.getItem("POST-ID");
   const [post, setPost] = useState({});
+  const [likesOpen, setLikesOpen] = useState(false);
+  const [likes, setLikes] = useState(0);
+  // const [clicked, setClicked] = useState(false);
+
+  async function PostlIkes() {
+    try {
+      const { data } = await api.put(`/likes/${postId}`);
+
+      if (!data) {
+        return alert("Erro ao curtir o post");
+      }
+
+      setLikes(data.likes);
+
+      setLikesOpen(true);
+
+      // window.location.reload();
+
+      return console.log(likes);
+    } catch (error) {
+      return alert(error);
+    }
+  }
 
   async function getPost() {
     try {
       const { data } = await api.get(`/get-one-post/${postId}`);
 
       setPost(data);
+
+      setLikes(data.likes);
 
       return console.log(post);
     } catch (error) {
@@ -101,34 +127,64 @@ function Post() {
               // justifyContent: "space-between",
             }}
           >
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                flexDirection: "row",
-              }}
-            >
-              <AiTwotoneLike
+            {likesOpen === true ? (
+              <div
                 style={{
-                  color: "blue",
-                  fontSize: "23px",
-                  marginLeft: "5px",
-                  marginTop: "-10px",
+                  display: "flex",
+                  alignItems: "center",
+                  marginLeft: "8px",
                 }}
-              />
-
-              <span
+                disabled
+              >
+                <button style={{ background: "none", border: "none" }} disabled>
+                  <AiFillLike
+                    style={{
+                      color: "lightgray",
+                      fontSize: "26px",
+                      marginLeft: "5px",
+                      marginTop: "-10px",
+                    }}
+                    // disabled={true}
+                  />
+                </button>
+                <p>{likes}</p>
+              </div>
+            ) : (
+              <div
                 style={{
-                  marginBottom: "10px",
-                  marginTop: "2px",
-                  marginLeft: "2px",
-                  fontSize: "22px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexDirection: "row",
                 }}
               >
-                {post.likes}
-              </span>
-            </div>
+                <button
+                  onClick={PostlIkes}
+                  style={{ background: "none", border: "none" }}
+                >
+                  <AiTwotoneLike
+                    style={{
+                      color: "blue",
+                      fontSize: "23px",
+                      marginLeft: "5px",
+                      marginTop: "-10px",
+                    }}
+                    // disabled={true}
+                  />
+                </button>
+
+                <span
+                  style={{
+                    marginBottom: "10px",
+                    marginTop: "2px",
+                    marginLeft: "2px",
+                    fontSize: "22px",
+                  }}
+                >
+                  {likes}
+                </span>
+              </div>
+            )}
 
             <div
               style={{
