@@ -45,6 +45,8 @@ function Post() {
 
       // window.location.reload();
 
+      getPost();
+
       return console.log(likes);
     } catch (error) {
       return alert(error);
