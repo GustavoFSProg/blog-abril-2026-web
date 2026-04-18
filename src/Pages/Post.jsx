@@ -143,21 +143,27 @@ function Post() {
                     style={{
                       color: "lightgray",
                       fontSize: "26px",
-                      marginLeft: "5px",
+                      // marginLeft: "5px",
                       marginTop: "-10px",
                     }}
                     // disabled={true}
                   />
                 </button>
-                <p>{likes}</p>
+                <p style={{ display: "flex", marginTop: "10px" }}>{likes}</p>
               </div>
             ) : (
               <div
+                // style={{
+                //   display: "flex",
+                //   alignItems: "center",
+                //   justifyContent: "center",
+                //   flexDirection: "row",
+                // }}
+
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  justifyContent: "center",
-                  flexDirection: "row",
+                  marginLeft: "8px",
                 }}
               >
                 <button
@@ -167,24 +173,15 @@ function Post() {
                   <AiTwotoneLike
                     style={{
                       color: "blue",
-                      fontSize: "23px",
-                      marginLeft: "5px",
+                      fontSize: "26px",
+                      // marginLeft: "-5px",
                       marginTop: "-10px",
                     }}
                     // disabled={true}
                   />
                 </button>
 
-                <span
-                  style={{
-                    marginBottom: "10px",
-                    marginTop: "2px",
-                    marginLeft: "2px",
-                    fontSize: "22px",
-                  }}
-                >
-                  {likes}
-                </span>
+                <p style={{ display: "flex", marginTop: "10px" }}>{likes}</p>
               </div>
             )}
 
