@@ -138,13 +138,22 @@ function Post() {
                 }}
                 disabled
               >
-                <button style={{ background: "none", border: "none" }} disabled>
+                <button
+                  style={{
+                    background: "none",
+                    // cursor: "pointer",
+                    border: "none",
+                  }}
+                  disabled
+                >
                   <AiFillLike
                     style={{
                       color: "lightgray",
                       fontSize: "26px",
-                      // marginLeft: "5px",
+                      // cursor: "pointer",
+
                       marginTop: "-10px",
+                      marginLeft: "-2px",
                     }}
                     // disabled={true}
                   />
@@ -164,6 +173,7 @@ function Post() {
                   display: "flex",
                   alignItems: "center",
                   marginLeft: "8px",
+                  cursor: "pointer",
                 }}
               >
                 <button
@@ -174,14 +184,22 @@ function Post() {
                     style={{
                       color: "blue",
                       fontSize: "26px",
-                      // marginLeft: "-5px",
+                      cursor: "pointer",
                       marginTop: "-10px",
                     }}
                     // disabled={true}
                   />
                 </button>
 
-                <p style={{ display: "flex", marginTop: "10px" }}>{likes}</p>
+                <p
+                  style={{
+                    display: "flex",
+                    marginLeft: "-2px",
+                    marginTop: "10px",
+                  }}
+                >
+                  {likes}
+                </p>
               </div>
             )}
 
