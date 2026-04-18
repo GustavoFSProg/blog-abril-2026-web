@@ -29,6 +29,7 @@ function Post() {
   const [post, setPost] = useState({});
   const [likesOpen, setLikesOpen] = useState(false);
   const [likes, setLikes] = useState(0);
+  const [views, setViews] = useState(0);
   // const [clicked, setClicked] = useState(false);
 
   async function PostlIkes() {
@@ -53,6 +54,20 @@ function Post() {
     }
   }
 
+  async function PostViews() {
+    const { data } = await api.put(`/views/${postId}`);
+
+    if (!data) {
+      return alert("Erro ao registrar a view");
+    }
+
+    setViews(data.views);
+
+    // window.location.reload();
+
+    return console.log(views);
+  }
+
   async function getPost() {
     try {
       const { data } = await api.get(`/get-one-post/${postId}`);
@@ -60,6 +75,8 @@ function Post() {
       setPost(data);
 
       setLikes(data.likes);
+
+      PostViews();
 
       return console.log(post);
     } catch (error) {
@@ -227,7 +244,7 @@ function Post() {
                     marginBottom: "2px",
                   }}
                 >
-                  {post.views}
+                  {views}
                 </span>
               </span>
             </div>
