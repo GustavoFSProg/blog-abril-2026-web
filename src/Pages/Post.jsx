@@ -76,8 +76,6 @@ function Post() {
 
       setLikes(data.likes);
 
-      PostViews();
-
       return console.log(post);
     } catch (error) {
       return alert(error);
@@ -90,6 +88,7 @@ function Post() {
 
   useEffect(() => {
     getPost();
+    PostViews();
   }, []);
 
   return (
