@@ -13,6 +13,7 @@ const Container = styled.div`
   @media screen and (max-width: 800px) {
     width: 100%;
     height: auto;
+    align-items: center;
   }
 `;
 
@@ -29,6 +30,8 @@ const ContainerLink = styled.div`
     width: 100%;
     flex-direction: column;
     height: auto;
+    justify-content: center;
+    align-items: center;
   }
 `;
 
