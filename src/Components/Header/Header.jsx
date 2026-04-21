@@ -9,6 +9,11 @@ const Container = styled.div`
   justify-content: center;
   background: #3d7bcc;
   color: yellow;
+
+  @media screen and (max-width: 800px) {
+    width: 100%;
+    height: auto;
+  }
 `;
 
 const ContainerLink = styled.div`
@@ -17,10 +22,14 @@ const ContainerLink = styled.div`
   height: 70px;
   align-items: center;
   justify-content: space-between;
-  //   background: "green",
-  color: yellow;
   font-size: 15px;
   color: yellow;
+
+  @media screen and (max-width: 800px) {
+    width: 100%;
+    flex-direction: column;
+    height: auto;
+  }
 `;
 
 function Header() {
