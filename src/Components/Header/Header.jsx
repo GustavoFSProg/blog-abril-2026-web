@@ -50,6 +50,7 @@ const ContainerLinkMobile = styled.div`
   margin-left: -42px;
   text-align: left;
   cursor: pointer;
+  color: #404040;
 
   /* 
   @media screen and (max-width: 800px) {
@@ -114,7 +115,7 @@ function Header() {
             alignItems: "center",
             marginTop: "5px",
             fontSize: "14px",
-            background: "green",
+            background: "#aec8ea",
             width: "37%",
             marginLeft: "18px",
             height: "auto",
@@ -130,7 +131,7 @@ function Header() {
               style={{
                 cursor: "pointer",
                 textDecoration: "none",
-                color: "black",
+                color: "#404040",
                 marginLeft: "-25px",
               }}
             >
@@ -143,7 +144,7 @@ function Header() {
               style={{
                 cursor: "pointer",
                 textDecoration: "none",
-                color: "black",
+                color: "#404040",
                 marginLeft: "-15px",
               }}
             >
