@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { CgMenuGridR } from "react-icons/cg";
+import { useState } from "react";
 
 const Container = styled.div`
   display: flex;
@@ -47,27 +48,67 @@ const MenuContainer = styled.div`
 `;
 
 function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
-    <Container>
-      <MenuContainer>
-        <CgMenuGridR
-          size="34"
-          style={{ cursor: "pointer", marginLeft: "15px" }}
-        />
-      </MenuContainer>
-      <ContainerLink>
-        <Link
-          to="/"
-          style={{ cursor: "pointer", textDecoration: "none", color: "yellow" }}
+    <>
+      <Container>
+        <MenuContainer>
+          <CgMenuGridR
+            size="34"
+            style={{ cursor: "pointer", marginLeft: "15px" }}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          />
+        </MenuContainer>
+
+        <ContainerLink>
+          <Link
+            to="/"
+            style={{
+              cursor: "pointer",
+              textDecoration: "none",
+              color: "yellow",
+            }}
+          >
+            <h3>Home</h3>
+          </Link>
+          <h3>Cadastro</h3>
+          <h3>Cadastro</h3>
+          <h3>Cadastro</h3>
+          <h3>Login</h3>
+        </ContainerLink>
+      </Container>
+      {isMenuOpen ? (
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: "5px",
+            fontSize: "14px",
+            background: "green",
+            width: "50%",
+            marginLeft: "18px",
+          }}
         >
-          <h3>Home</h3>
-        </Link>
-        <h3>Cadastro</h3>
-        <h3>Cadastro</h3>
-        <h3>Cadastro</h3>
-        <h3>Login</h3>
-      </ContainerLink>
-    </Container>
+          <Link
+            to="/"
+            style={{
+              cursor: "pointer",
+              textDecoration: "none",
+              color: "black",
+            }}
+          >
+            <h3>Home</h3>
+          </Link>
+          <h3>Cadastro</h3>
+          <h3>Cadastro</h3>
+          <h3>Cadastro</h3>
+          <h3>Login</h3>
+        </div>
+      ) : null}
+    </>
   );
 }
 
