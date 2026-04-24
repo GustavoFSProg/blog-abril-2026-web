@@ -28,6 +28,7 @@ const ContainerLink = styled.div`
   justify-content: space-between;
   font-size: 15px;
   color: yellow;
+  text-decoration: none;
 
   @media screen and (max-width: 800px) {
     /* width: 100%;
@@ -96,6 +97,7 @@ function Header() {
             style={{
               cursor: "pointer",
               textDecoration: "none",
+              color: "yellow",
             }}
           >
             <h3>Home</h3>
