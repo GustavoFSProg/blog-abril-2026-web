@@ -132,6 +132,7 @@ function App() {
             alignItems: "center",
             justifyContent: "center",
             paddingBottom: "50px",
+            Zindex: "1",
           }}
         >
           {/* <div> */}

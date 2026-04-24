@@ -115,7 +115,7 @@ function Header() {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            marginTop: "5px",
+            marginTop: "70px",
             fontSize: "14px",
             background: "#aec8ea",
             width: "37%",
@@ -124,6 +124,7 @@ function Header() {
             padding: "5px",
             paddingBottom: "30px",
             borderRadius: "8px",
+            position: "absolute",
           }}
           onMouseLeave={() => setIsMenuOpen(false)}
         >

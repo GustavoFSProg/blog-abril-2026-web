@@ -94,6 +94,7 @@ function Post() {
   return (
     <>
       <Header />
+
       <div
         style={{
           display: "flex",
