@@ -39,9 +39,36 @@ const ContainerLink = styled.div`
   }
 `;
 
+const ContainerLinkMobile = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 5px;
+  font-size: 14px;
+  width: 50%;
+  margin-left: -42px;
+  text-align: left;
+  cursor: pointer;
+
+  /* 
+  @media screen and (max-width: 800px) {
+  } */
+`;
+
 const MenuContainer = styled.div`
   display: none;
 
+  @media screen and (max-width: 850px) {
+    display: flex;
+  }
+`;
+
+const H3 = styled.h3`
+  /* display: none; */
+  margin-bottom: -2px;
+  font-size: 18px;
+  margin-left: 12px;
   @media screen and (max-width: 850px) {
     display: flex;
   }
@@ -58,6 +85,7 @@ function Header() {
             size="34"
             style={{ cursor: "pointer", marginLeft: "15px" }}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            onMouseLeave={() => setIsMenuOpen(false)}
           />
         </MenuContainer>
 
@@ -67,7 +95,6 @@ function Header() {
             style={{
               cursor: "pointer",
               textDecoration: "none",
-              color: "yellow",
             }}
           >
             <h3>Home</h3>
@@ -88,24 +115,41 @@ function Header() {
             marginTop: "5px",
             fontSize: "14px",
             background: "green",
-            width: "50%",
+            width: "37%",
             marginLeft: "18px",
+            height: "auto",
+            padding: "5px",
+            paddingBottom: "30px",
+            borderRadius: "8px",
           }}
+          onMouseLeave={() => setIsMenuOpen(false)}
         >
-          <Link
-            to="/"
-            style={{
-              cursor: "pointer",
-              textDecoration: "none",
-              color: "black",
-            }}
-          >
-            <h3>Home</h3>
-          </Link>
-          <h3>Cadastro</h3>
-          <h3>Cadastro</h3>
-          <h3>Cadastro</h3>
-          <h3>Login</h3>
+          <ContainerLinkMobile>
+            <Link
+              to="/"
+              style={{
+                cursor: "pointer",
+                textDecoration: "none",
+                color: "black",
+                marginLeft: "-25px",
+              }}
+            >
+              <H3>Home</H3>
+            </Link>
+            <H3>Cadastro</H3>
+            <H3>Cadastro</H3>
+            <H3>Cadastro</H3>
+            <H3
+              style={{
+                cursor: "pointer",
+                textDecoration: "none",
+                color: "black",
+                marginLeft: "-15px",
+              }}
+            >
+              Login
+            </H3>
+          </ContainerLinkMobile>
         </div>
       ) : null}
     </>
