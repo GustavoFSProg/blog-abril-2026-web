@@ -57,7 +57,7 @@ const CardApp = styled.div`
 `;
 
 const TitleContainer = styled.h1`
-  @media screen and (max-width: 850px) {
+  @media screen and (max-width: 800px) {
     font-size: 22px;
     text-align: center;
   }
@@ -68,8 +68,93 @@ const TextContainer = styled.p`
   text-align: justify;
   width: 80%;
 
-  @media screen and (max-width: 850px) {
+  @media screen and (max-width: 800px) {
     width: 100%;
+  }
+`;
+
+const Data = styled.p`
+  margin-left: -255px;
+
+  @media screen and (max-width: 800px) {
+    margin-left: 165px;
+    margin-top: -2px;
+  }
+`;
+
+const Author = styled.p`
+  text-indent: 20px;
+  text-align: justify;
+  width: 80%;
+  /* margin-left: 60px; */
+
+  @media screen and (max-width: 800px) {
+    display: flex;
+    width: 100%;
+    margin-left: 0px;
+    justify-content: center;
+
+    /* width: 800px; */
+    /* background: yellow; */
+  }
+`;
+
+const ContainerAuthor = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-around;
+  /* margin-left: 85px; */
+
+  @media screen and (max-width: 800px) {
+    width: 25rem;
+    flex-direction: column;
+    margin-left: -25px;
+  }
+`;
+
+const ContainerLikes = styled.div`
+  display: flex;
+  align-items: center;
+  margin-left: 15px;
+  cursor: pointer;
+
+  @media screen and (max-width: 800px) {
+    margin-left: -5px;
+  }
+`;
+
+const Likes = styled.p`
+  display: flex;
+  margin-top: 10px;
+  margin-left: -5px;
+`;
+
+const ViewsContainer = styled.div`
+  display: flex;
+  /* margin-left: -50px; */
+  font-size: 16px;
+  margin-top: -5px;
+
+  @media screen and (max-width: 800px) {
+  }
+`;
+
+const Views = styled.span`
+  display: flex;
+  font-size: 16px;
+  margin-left: 4px;
+  margin-bottom: 2px;
+  margin-top: 1px;
+`;
+
+const WrapperLikesViews = styled.div`
+  display: flex;
+  align-items: center;
+  margin-left: -7px;
+
+  @media screen and (max-width: 800px) {
+    margin-left: -27px;
   }
 `;
 
@@ -173,20 +258,12 @@ function Post() {
             {post.text}
           </p> */}
           <TextContainer>{post.text}</TextContainer>
-          <div
-            style={{
-              display: "flex",
-              width: "100%",
-              flexDirection: "row",
-              justifyContent: "space-around",
-            }}
-          >
-            <p style={{ marginLeft: "-5px" }}>Autor: {post.author}</p>
+          <ContainerAuthor>
+            <Author>Autor: {post.author}</Author>
             {/* <p style={{ marginLeft: "320px" }}> */}
-            <p style={{ marginLeft: "185px" }}>
-              {getDateWithoutTime(post.createdAt)}
-            </p>
-          </div>
+            {/* <Data style={{ marginLeft: "185px" }}> */}
+            <Data>{getDateWithoutTime(post.createdAt)}</Data>
+          </ContainerAuthor>
           <div
             style={{
               display: "flex",
@@ -197,18 +274,12 @@ function Post() {
             }}
           >
             {likesOpen === true ? (
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  marginLeft: "8px",
-                }}
-                disabled
-              >
+              <WrapperLikesViews disabled>
                 <button
                   style={{
                     background: "none",
                     // cursor: "pointer",
+
                     border: "none",
                   }}
                   disabled
@@ -220,32 +291,35 @@ function Post() {
                       // cursor: "pointer",
 
                       marginTop: "-10px",
-                      marginLeft: "-2px",
                     }}
                     // disabled={true}
                   />
                 </button>
-                <p style={{ display: "flex", marginTop: "10px" }}>{likes}</p>
-              </div>
+                <Likes>{likes}</Likes>
+              </WrapperLikesViews>
             ) : (
-              <div
-                // style={{
-                //   display: "flex",
-                //   alignItems: "center",
-                //   justifyContent: "center",
-                //   flexDirection: "row",
-                // }}
+              <ContainerLikes
+              // style={{
+              //   display: "flex",
+              //   alignItems: "center",
+              //   justifyContent: "center",
+              //   flexDirection: "row",
+              // }}
 
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  marginLeft: "8px",
-                  cursor: "pointer",
-                }}
+              // style={{
+              //   display: "flex",
+              //   alignItems: "center",
+              //   marginLeft: "8px",
+              //   cursor: "pointer",
+              // }}
               >
                 <button
                   onClick={PostlIkes}
-                  style={{ background: "none", border: "none" }}
+                  style={{
+                    background: "none",
+                    marginLeft: "-22px",
+                    border: "none",
+                  }}
                 >
                   <AiTwotoneLike
                     style={{
@@ -258,16 +332,16 @@ function Post() {
                   />
                 </button>
 
-                <p
-                  style={{
-                    display: "flex",
-                    marginLeft: "-2px",
-                    marginTop: "10px",
-                  }}
+                <Likes
+                // style={{
+                //   display: "flex",
+                //   marginLeft: "-2px",
+                //   marginTop: "10px",
+                // }}
                 >
                   {likes}
-                </p>
-              </div>
+                </Likes>
+              </ContainerLikes>
             )}
 
             <div
@@ -279,24 +353,24 @@ function Post() {
                 marginLeft: "20px",
               }}
             >
-              <span
-                style={{
-                  marginLeft: "10px",
-                  fontSize: "18px",
-                  marginTop: "-10px",
-                }}
+              <ViewsContainer
+              // style={{
+              //   marginLeft: "10px",
+              //   fontSize: "18px",
+              //   marginTop: "-10px",
+              // }}
               >
-                VIEWS:
-                <span
-                  style={{
-                    fontSize: "22px",
-                    marginLeft: "2px",
-                    marginBottom: "2px",
-                  }}
+                Views:
+                <Views
+                // style={{
+                //   fontSize: "22px",
+                //   marginLeft: "2px",
+                //   marginBottom: "2px",
+                // }}
                 >
                   {views}
-                </span>
-              </span>
+                </Views>
+              </ViewsContainer>
             </div>
           </div>
         </CardApp>
