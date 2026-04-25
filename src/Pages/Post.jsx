@@ -8,20 +8,69 @@ import Header from "../Components/Header/Header";
 import { AiTwotoneLike } from "react-icons/ai";
 import { AiFillLike } from "react-icons/ai";
 
-const Card = styled.div`
+// const Card = styled.div`
+//   display: flex;
+//   width: 60%;
+//   height: auto;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+//   margin-top: 70px;
+//   background: #ffffcc;
+//   padding: 30px;
+//   padding-bottom: 50px;
+//   border: 1px solid black;
+//   border-radius: 10px;
+// `;
+
+const AppContainer = styled.div`
   display: flex;
-  width: 60%;
+  width: 100vw;
+  height: auto;
+  overflow-x: hidden;
+  flex-direction: column;
+
+  @media screen and (max-width: 800px) {
+    overflow-x: hidden;
+  }
+`;
+
+const CardApp = styled.div`
+  display: flex;
+  width: 50%;
   height: auto;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 70px;
+  margin-top: 15px;
   background: #ffffcc;
   padding: 30px;
-  padding-bottom: 50px;
+  /* padding-bottom: 30px; */
   border: 1px solid black;
   border-radius: 10px;
   /* flex-direction: row; */
+
+  @media screen and (max-width: 800px) {
+    width: 75%;
+    margin-top: -5px;
+  }
+`;
+
+const TitleContainer = styled.h1`
+  @media screen and (max-width: 850px) {
+    font-size: 22px;
+    text-align: center;
+  }
+`;
+
+const TextContainer = styled.p`
+  text-indent: 20px;
+  text-align: justify;
+  width: 80%;
+
+  @media screen and (max-width: 850px) {
+    width: 100%;
+  }
 `;
 
 function Post() {
@@ -92,7 +141,7 @@ function Post() {
   }, []);
 
   return (
-    <>
+    <AppContainer>
       <Header />
 
       <div
@@ -106,15 +155,15 @@ function Post() {
           marginBottom: "150px",
         }}
       >
-        <h1>POST</h1>
+        <h2>POST</h2>
         {/* {postId} */}
-        <Card key={post.id}>
-          <h1>{post.title}</h1>
+        <CardApp key={post.id}>
+          <TitleContainer>{post.title}</TitleContainer>
 
           <img src={post.image} width="300" alt={post.title} />
           {/* <p>{post.description}</p> */}
 
-          <p
+          {/* <p
             style={{
               textIndent: "20px",
               textAlign: "justify",
@@ -122,7 +171,8 @@ function Post() {
             }}
           >
             {post.text}
-          </p>
+          </p> */}
+          <TextContainer>{post.text}</TextContainer>
           <div
             style={{
               display: "flex",
@@ -249,9 +299,9 @@ function Post() {
               </span>
             </div>
           </div>
-        </Card>
+        </CardApp>
       </div>
-    </>
+    </AppContainer>
   );
 }
 

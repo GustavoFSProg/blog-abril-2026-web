@@ -61,7 +61,7 @@ const ContainerLinkMobile = styled.div`
 const MenuContainer = styled.div`
   display: none;
 
-  @media screen and (max-width: 850px) {
+  @media screen and (max-width: 800px) {
     display: flex;
   }
 `;
@@ -71,7 +71,7 @@ const H3 = styled.h3`
   margin-bottom: -2px;
   font-size: 18px;
   margin-left: 12px;
-  @media screen and (max-width: 850px) {
+  @media screen and (max-width: 800px) {
     display: flex;
   }
 `;
